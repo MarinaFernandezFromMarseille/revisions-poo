@@ -78,11 +78,14 @@ class Product
         return $this->updatedAt;
     }
 
-    public function setUptatedAt(DateTime $uptatedAt = null)
+    public function setUpdatedAt(DateTime $updatedAt = null)
     {
-
+        $this->updatedAt = $updatedAt;
     }
 }
+
+$gourde = new Product (1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'));
+var_dump($gourde);
 ?>
 
 <!DOCTYPE html>
