@@ -7,11 +7,11 @@ class Product
     private $photos = [];
     private $description;
     private $quantity;
-
     private $createdAt;
     private $updatedAt;
+    private $category_id;
 
-    public function __construct($id, $name, $photos, $description, $quantity, DateTime $createdAt, DateTime $updatedAt)
+    public function __construct($id, $name, $photos, $description, $quantity, DateTime $createdAt, DateTime $updatedAt, $category_id)
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,6 +20,7 @@ class Product
         $this->quantity = $quantity;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->category_id = $category_id;
     }
 
     //getters and setters
@@ -82,9 +83,18 @@ class Product
     {
         $this->updatedAt = $updatedAt;
     }
+
+    public function getCategory_id(){
+    return $this->category_id;
 }
 
-$gourde = new Product (1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'));
+    public function setCategory_id($category_id){
+        $this->category_id = $category_id;
+    }
+}
+
+
+$gourde = new Product (1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'), 1);
 var_dump($gourde);
 ?>
 
