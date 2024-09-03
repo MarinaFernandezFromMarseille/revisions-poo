@@ -160,6 +160,21 @@ class Category
 }
 
 
-$gourde = new Product(1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'), 1);
-var_dump($gourde);
+$product1 = new Product(1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'), 0);
+var_dump($product1);
+
+$product2 = new Product(2,'',[],'',0,new DateTime(''),new DateTime(''),1);
+var_dump($product2);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
