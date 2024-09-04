@@ -160,11 +160,6 @@ class Category
 }
 
 
-$product1 = new Product(1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'), 0);
-var_dump($product1);
-
-$product2 = new Product(2,'',[],'',0,new DateTime(''),new DateTime(''),1);
-var_dump($product2);
 ?>
 
 <!DOCTYPE html>
@@ -175,6 +170,52 @@ var_dump($product2);
     <title>Document</title>
 </head>
 <body>
+
+<?php
+
+try {
+    // Connexion à la base de données
+    $host = 'localhost'; // L'adresse du serveur de la base de données
+    $dbname = 'job02'; // Le nom de la base de données
+    $username = 'root'; // Le nom d'utilisateur de la base de données
+    $password = ''; // Le mot de passe de la base de données
+
+    // Création de la connexion PDO
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+
+    // Configurer PDO pour afficher les erreurs en mode Exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT * FROM products WHERE id = 7";
+    $stmt = $pdo->query($sql);
+
+    // Récupération des résultats
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Initialisation du tableau associatif
+    $tableauAssociatif = [];
+
+    foreach ($products as $product) {
+
+        $tableauAssociatif[$product['id']] = [
+            'name' => $product['name'],
+            'description' => $product['description'],
+            'photos' => $product['photos'],
+            'quantity' => $product['quantity'],
+            'category_id' => $product['category_id'],
+            'createdAt' => $product['createdAt'],
+            'updatedAt' => $product['updatedAt']
+        ];
+    }
+
+    // Affichage du tableau associatif
+    echo "<pre>";
+    print_r($tableauAssociatif); // Affichage structuré pour mieux voir le tableau associatif
+    echo "</pre>";
+} catch (PDOException $e) {
+    // En cas d'erreur, on affiche un message
+    echo "Erreur : " . $e->getMessage();
+}
     
 </body>
 </html>
