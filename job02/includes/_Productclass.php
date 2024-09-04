@@ -11,21 +11,21 @@ class Product
     private $updatedAt;
     private $category_id;
 
-    public function __construct($id, $name, $photos, $description, $quantity, DateTime $createdAt, DateTime $updatedAt, $category_id)
+    // Constructeur avec tous les paramètres optionnels
+    public function __construct($id = null, $name = null, $photos = [], $description = null, $quantity = 0, DateTime $createdAt = null, DateTime $updatedAt = null, $category_id = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->photos = $photos;
         $this->description = $description;
         $this->quantity = $quantity;
-        $this->createdAt = $createdAt;
+        $this->createdAt = $createdAt ?? new DateTime(); // Date actuelle par défaut si non fournie
         $this->updatedAt = $updatedAt;
         $this->category_id = $category_id;
     }
 
-    //getters and setters
-    //id getter
-
+    // Getters and setters
+    // id getter
     public function getId()
     {
         return $this->id;
@@ -35,6 +35,7 @@ class Product
     {
         return $this->name;
     }
+
     public function setName($name)
     {
         $this->name = $name;
@@ -44,6 +45,7 @@ class Product
     {
         return $this->photos;
     }
+
     public function setPhotos($photos)
     {
         $this->photos = $photos;
@@ -67,34 +69,31 @@ class Product
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
-
     }
+
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->createdAt->format('Y-m-d H:i:s');
     }
 
     public function getUpdatedAt()
     {
-        return $this->updatedAt;
+        return $this->updatedAt ? $this->updatedAt->format('Y-m-d H:i:s') : null;
     }
 
     public function setUpdatedAt(DateTime $updatedAt = null)
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = $updatedAt ?? new DateTime(); // Date actuelle par défaut si non fournie
     }
 
-    public function getCategory_id(){
-    return $this->category_id;
-}
+    public function getCategory_id()
+    {
+        return $this->category_id;
+    }
 
-    public function setCategory_id($category_id){
+    public function setCategory_id($category_id)
+    {
         $this->category_id = $category_id;
     }
 }
-
-
-$gourde = new Product (1, 'Gourde à  strass', ["https://img.ltwebstatic.com/images3_spmp/2024/03/01/b9/170928133826ff7d10ef4ee44ac2aa8cff5e58d64f_thumbnail_720x.webp"], 'Gourde girly à strass', 10, new DateTime('2020-02-02'), new DateTime('2024-03-02'), 1);
-var_dump($gourde);
 ?>
-
