@@ -1,9 +1,11 @@
 <?php
 
 include 'includes/_Productclass.php';
+$product1 = new products (1,'gourde',"https://www.sistersastro.com/cdn/shop/products/GOURDE_STRASS_XL_ROSE1_200x200_crop_center.jpg?v=1665225633", "gourde rose girly à strass 700ml", 10, new DateTime('2024-09-03 15:51:06'), new DateTime('2024-09-03 15:51:06'), 0);
 
 
 include 'includes/_Categoryclass.php';
+$category1 = new Category (0, 'Maison et Cuisine','objets du quotidien, ustensiles de cuisine, déco, ameublement', new DateTime('2024-09-03 16:06:53'), new DateTime('2024-09-03 16:06:53'));
 
 ?>
 
