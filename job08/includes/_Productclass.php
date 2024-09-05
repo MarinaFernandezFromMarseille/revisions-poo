@@ -173,4 +173,20 @@ class products
         // Si aucun produit n'est trouvé, retourner un tableau vide
         return [];
     }
+
+    public function create(){
+
+        $sql = "INSERT INTO products (name, description, quantity, createdAt, updatedAt, category_id) VALUES (:name, :description, :quantity, :createdAt, :updatedAt, :category_id)";
+        $pdo = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname . ';charset=utf8', $this->dbuser, $this->dbpass);
+        // Préparation de la requête
+        $stmt = $pdo->prepare($sql);
+
+        // Exécuter la requête
+        $stmt->execute();
+
+        // Récupérer le résultat sous forme de tableau associatif
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     
+        
+    }
 }
