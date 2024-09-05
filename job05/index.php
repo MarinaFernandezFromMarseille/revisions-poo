@@ -30,6 +30,13 @@ try {
 
     // Récupération des résultats
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($products) > 0) {
+        $category_id = $products[0]['category_id']; // On récupère la valeur de getCategory_id()
+        echo $category_id;
+    } else {
+        echo "Aucun produit trouvé avec l'ID spécifié.";
+    }
    
     $category_id = $products[0]['category_id']; // On récupère la valeur de getCategory_id()
 

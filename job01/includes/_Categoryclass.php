@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Category
 {
     private $id;
@@ -26,7 +28,7 @@ class Category
 
     public function getName()
     {
-        return $this->name;
+        return (string) $this->name;
     }
 
     public function setName($name)
@@ -78,16 +80,16 @@ class Category
         // Récupérer les résultats sous forme de tableau associatif
         $productRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Si des produits sont trouvés, on crée des instances de la classe Product
+        // Si des produits sont trouvés, on crée des instances de la classe products
         foreach ($productRows as $row) {
-            $products[] = new Product(
+            $products[] = new products(
                 $row['id'],
                 $row['name'],
-                $row['photos'], // On suppose que les photos sont stockées sous forme de tableau JSON
+                json_decode($row['photos'], true), // On suppose que les photos sont stockées sous forme de tableau JSON
                 $row['description'],
                 $row['quantity'],
-                new DateTime($row['created_at']),
-                isset($row['updated_at']) ? new DateTime($row['updated_at']) : null,
+                new DateTime($row['createdAt']),
+                isset($row['updatedAt']) ? new DateTime($row['updatedAt']) : null,
                 $row['category_id']
             );
         }
@@ -97,30 +99,4 @@ class Category
     }
 }
 
-// Classe Product pour les exemples
-class Product
-{
-    private $id;
-    private $name;
-    private $photos = [];
-    private $description;
-    private $quantity;
-    private $createdAt;
-    private $updatedAt;
-    private $category_id;
 
-    public function __construct($id = null, $name = null, $photos = [], $description = null, $quantity = 0, DateTime $createdAt = null, DateTime $updatedAt = null, $category_id = null)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->photos = $photos;
-        $this->description = $description;
-        $this->quantity = $quantity;
-        $this->createdAt = $createdAt ?? new DateTime();
-        $this->updatedAt = $updatedAt;
-        $this->category_id = $category_id;
-    }
-
-    // Getters et setters pour Product...
-}
-?>

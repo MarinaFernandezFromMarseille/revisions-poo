@@ -104,4 +104,4 @@ class products
         $this->category_id = $category_id;
     }
 }
-?>
+
