@@ -1,7 +1,7 @@
 <?php
 
-include '../assets/includes/_Categoryclass.php'; //categoryclass's file has been updtated
-include '../assets/includes/_Productclass.php'; //productclass's file has been updtated
+include './includes/_Categoryclass.php'; //categoryclass's file has been updtated
+include './includes/_Productclass.php'; //productclass's file has been updtated
 
 ?>
 <!DOCTYPE html>
